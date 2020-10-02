@@ -112,3 +112,6 @@ scripts/app/config
 
 # Readme 
 README.md
+
+# Specific files 
+contracts/logic/CrossExchangeArbitrageProvider.sol

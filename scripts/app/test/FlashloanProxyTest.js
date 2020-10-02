@@ -15,7 +15,7 @@ web3.eth.net.isListening()
 // const keystore = "Contents of keystore file";
 // const account = web3.eth.accounts.decrypt(keystore, 'PASSWORD');
 const account = web3.eth.accounts.privateKeyToAccount(env.local.secret);
-console.log("Using Account: " + account.address)
+console.log("\nUsing Account: " + account.address)
 /*
 	In order to interact with the contract, we need two things 
 	|	ABI (created by compiler and located in builc/contracts) 
@@ -24,7 +24,7 @@ console.log("Using Account: " + account.address)
 appConfig = JSON.parse(fs.readFileSync("./scripts/app/config/app.env", 'utf8'));
 const FlashloanProxyABI = JSON.parse(fs.readFileSync(appConfig.flashloanProxy.abi, 'utf8'));
 const FlashloanProxy 	= new web3.eth.Contract(FlashloanProxyABI.abi, appConfig.flashloanProxy.address);
-
+console.log("Using Proxy: " + appConfig.flashloanProxy.address)
 
 // Gas settings
 // FlashloanProxy.options.gasPrice = '20000000000000'; // default gas price in wei
@@ -72,7 +72,7 @@ const testTransferEther = async() => {
 const testFlashloan = async () => {
 
 	// Test flashloan functionality (note we must send in a bit of ETH to pay the fee)
-	var depositAmount 	= web3.utils.toWei("0.10");
+	var depositAmount 	= web3.utils.toWei("1.00");
 	var flashloanAmount = web3.utils.toWei("10.0");
 
 	var addressLogicProvider = appConfig.logicProvider.address
@@ -86,7 +86,7 @@ const testFlashloan = async () => {
 	console.log("Balance (flashloan): " + result)
 	
 	// 0.0189013 ETH @ 102gwei (185307 gas)
- 	var result 	= await FlashloanProxy.methods.executeFlashloan( flashloanAmount, "0x00" ).send({from: account.address, gas: 200000})
+ 	var result 	= await FlashloanProxy.methods.executeFlashloan( flashloanAmount, "0x00" ).send({from: account.address, gas: 300000})
 	var result 	= await FlashloanProxy.methods.assetBalance(assetAddress).call()
 	console.log("Balance (flashloan): " + result)
 	

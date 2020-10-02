@@ -64,7 +64,7 @@ contract FlashloanProxy is FlashLoanReceiverBase {
         */
 
         ILogicProvider LogicProvider = ILogicProvider( logicProviderAddress );
-        LogicProvider.executeLogic( _amount, data );
+        LogicProvider.executeLogic{ value: _amount }( address(this), data );
 
         uint totalDebt = _amount.add(_fee);
         transferFundsBackToPoolInternal(_reserve, totalDebt);

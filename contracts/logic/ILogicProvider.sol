@@ -7,5 +7,5 @@ pragma solidity ^0.6.6;
 	different routines for provisioning flashloaned assets. 
 */
 interface ILogicProvider { 
-	function executeLogic( uint256 _amount, bytes memory _data ) external; 
+	function executeLogic( address payable addressFlashloanProxy, bytes memory _data ) external payable; 
 }
