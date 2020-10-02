@@ -50,7 +50,7 @@ If truffle instillation results in gyp errors, it might be necessary to install 
 
 Start ganache-cli. Ganache is configured to fork mainnet using a provided Infura API key. Note that this script requires node 12 to be installed.
 
-`./scripts/ganache/ganache-cli-fork-mainnet.sh`
+`./scripts/utils/ganache-cli-fork-mainnet.sh`
 
 Deploy the contract
 
@@ -59,6 +59,10 @@ Deploy the contract
 Run the javascript interface to test contract interation
 
 `node ./scripts/app/test/FlashloanProxyTest.js` 
+
+In case it is necessary to force recopmilation and redeployment
+
+./scripts/utils/truffle-migrate-force-deploy.sh 
 
 After deploying the conract, it is also possible to interact dynamically via truffle console. The following sequece of commands gets a handle to the contract, transfers 0.1 ETH to the contract, takes a flashloan for 10 ETH, and withdraws the funds back to the requseting account.
 
@@ -76,8 +80,4 @@ After deploying the conract, it is also possible to interact dynamically via tru
 
   `truffle(developmet)> f.assetWithdraw("0x0000000000000000000000000000000000000000")`
 
-  
-  
-  
-  
-  
+

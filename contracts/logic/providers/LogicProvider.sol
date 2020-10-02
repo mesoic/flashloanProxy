@@ -1,7 +1,7 @@
 pragma solidity ^0.6.6;
 
-import "./ILogicProvider.sol";
-import "../utils/Withdrawable.sol";
+import "../ILogicProvider.sol";
+import "../../utils/Withdrawable.sol";
 
 /** 
 	The LogicProvider contract implements a minimum working example of the ILogicProvider 
