@@ -26,7 +26,7 @@ Check node and npm version after installation
 
 `npm install -g ganache-cli`
 
-If truffle instillation results in gyp errors, it might be necessary to install node-gyp. If this is required be sure to exit the shell and restart after installing node-gyp.
+If truffle instillation results in gyp errors, it might be necessary to install node-gyp. If node-gyp instillation is required, be sure to exit the shell after installing node-gyp. Then attempt to install truffle from a new shell. 
 
 `npm install -g node-gyp`
 
