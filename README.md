@@ -11,6 +11,8 @@ This repository provisions a framework for deploying and testing smart contract 
 
 `nvm install 12` 
 
+`npm install`
+
 ### Set up your .env file (JSON format)
 
 `{
