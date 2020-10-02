@@ -1,0 +1,26 @@
+{
+  "name": "flashloan-proxy",
+  "description": "A truffle box containing all you need to get started with developing flash loans",
+  "version": "1.0.0",
+  "license": "AGPLv3",
+  "author": "Aave",
+  "contributors": [
+    "David Truong <david@aave.com>",
+    "Mesoic <github.com/mesoic>"
+  ],
+  "homepage": "https://docs.aave.com/developers/tutorials/performing-a-flash-loan/...-with-truffle",
+  "repository": "https://github.com/aave/flashloan-box",
+  "dependencies": {
+    "@uniswap/sdk": "^3.0.3",
+    "@uniswap/v2-core": "^1.0.1",
+    "@uniswap/v2-periphery": "^1.1.0-beta.0",
+    "ethers": "^5.0.14",
+    "solidity-bytes-utils": "^0.1.0"
+  },
+  "devDependencies": {
+    "@openzeppelin/contracts": "^3.0.0",
+    "@truffle/hdwallet-provider": "^1.1.0",
+    "dotenv": "^8.2.0",
+    "truffle": "^5.1.32"
+  }
+}
