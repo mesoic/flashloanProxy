@@ -2,10 +2,33 @@
 
 This repository provisions a framework for deploying and testing smart contract development in the context of an Aave flashloan. The proxy contract handles the request and repayment of the flashloan. The proxy contract contains an address variable which points to another contract which contains specifies how flashloaned funds should be manipulated.
 
+### Install nodejs (Linux)
+
+Run install script (remote source). This method seems to work better than installing via distribution package managers
+
+`curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash`
+
+Check available versions and install node (and nvm)
+
+`nvm ls-remote`
+
+`nvm install node`
+
+Check node and npm version after installation
+
+`node -v`
+
+`npm -v`
+
 ### Install base 
+
 `npm install -g truffle`
 
 `npm install -g ganache-cli`
+
+If truffle instillation results in gyp errors, it might be necessary to install node-gyp. If this is required be sure to exit the shell and restart after installing node-gyp.
+
+`npm install -g node-gyp`
 
 ### Install node version 12 (for ganache-cli) and node packages
 
