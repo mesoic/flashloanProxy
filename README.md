@@ -1,6 +1,6 @@
 # flashloanProxy
 
-This repo provisions a framework for deploying and testing smart contract development in the context of an Aave flashloan. The proxy contract handles the request and repayment of the flashloan. The proxy contract contains an address variable which points to another contract which contains specifies how flashloaned funds should be manipulated.
+This repository provisions a framework for deploying and testing smart contract development in the context of an Aave flashloan. The proxy contract handles the request and repayment of the flashloan. The proxy contract contains an address variable which points to another contract which contains specifies how flashloaned funds should be manipulated.
 
 ### Install base 
 `npm install -g truffle`
