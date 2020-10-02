@@ -1,4 +1,5 @@
-let Flashloan = artifacts.require("FlashloanProxy")
+let FlashloanProxy = artifacts.require("FlashloanProxy")
+let LogicProvider  = artifacts.require("LogicProvider")
 
 module.exports = async function (deployer, network) {
     try {
@@ -20,7 +21,9 @@ module.exports = async function (deployer, network) {
                 throw Error(`Are you deploying to the correct network? (network selected: ${network})`)
         }
 
-        await deployer.deploy(Flashloan, lendingPoolAddressesProviderAddress)
+        await deployer.deploy(FlashloanProxy, lendingPoolAddressesProviderAddress)
+        await deployer.deploy(LogicProvider)
+
     } catch (e) {
         console.log(`Error in migration: ${e.message}`)
     }

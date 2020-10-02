@@ -14,33 +14,33 @@ import "./aave/ILendingPool.sol";
     allows the owner to assign a LogicProvider (as a contract address) which will be 
     called with (bytes memory data) inside of executeOperation.
 */
+import "./logic/ILogicProvider.sol";
 
 /**
     Expose the function signature of the logic provider so the compiler can figure out 
     the function signature. This will allow us to delegate call the cotract
 */
-contract LogicProvider { function executeLogic( uint256 _amount, bytes memory _data ) public {} }
 
 contract FlashloanProxy is FlashLoanReceiverBase {
 
     /**
         Initialize address of logicProvider to 0x00
     */
-    address logicProvider = 0x0000000000000000000000000000000000000000;
+    address logicProviderAddress = 0x0000000000000000000000000000000000000000;
 
     /** 
         Constructor inherits FlashloanRecieverBase and assigns pointer to a logic contract.
         This allows us to introdude upgradable behaviour to the logic contract. 
     */ 
-    constructor(address _addressProvider) FlashLoanReceiverBase(_addressProvider) public {}
+    constructor(address _addressProviderAddress) FlashLoanReceiverBase(_addressProviderAddress) public {}
 
 
-    function setLogicProvider( address _logicProvider ) public onlyOwner { 
-        logicProvider = _logicProvider;
+    function setLogicProvider( address _logicProviderAddress ) public onlyOwner { 
+        logicProviderAddress = _logicProviderAddress;
     }    
 
     function getLogicProvider() public view returns ( address ) { 
-        return logicProvider; 
+        return logicProviderAddress; 
     }
 
     /**
@@ -63,6 +63,8 @@ contract FlashloanProxy is FlashLoanReceiverBase {
             operation from the flashloan execution (which is always the same).
         */
 
+        ILogicProvider LogicProvider = ILogicProvider( logicProviderAddress );
+        LogicProvider.executeLogic( _amount, data );
 
         uint totalDebt = _amount.add(_fee);
         transferFundsBackToPoolInternal(_reserve, totalDebt);

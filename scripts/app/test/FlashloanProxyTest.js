@@ -39,7 +39,7 @@ const testLogicProvider = async () => {
 	var result = await FlashloanProxy.methods.getLogicProvider().call()
 	console.log("Logic Provider: " + result)
 
-	var addressLogicProvider = "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE"
+	var addressLogicProvider = appConfig.logicProvider.address
 	var hash   = await FlashloanProxy.methods.setLogicProvider(addressLogicProvider).send({from: account.address})
 	var result = await FlashloanProxy.methods.getLogicProvider().call()
 	console.log("Logic Provider: " + result)
@@ -75,8 +75,12 @@ const testFlashloan = async () => {
 	var depositAmount 	= web3.utils.toWei("0.10");
 	var flashloanAmount = web3.utils.toWei("10.0");
 
-	var assetAddress  = "0x0000000000000000000000000000000000000000" 
+	var addressLogicProvider = appConfig.logicProvider.address
+	var hash   = await FlashloanProxy.methods.setLogicProvider(addressLogicProvider).send({from: account.address})
+	var result = await FlashloanProxy.methods.getLogicProvider().call()
+	console.log("Logic Provider: " + result)
 
+	var assetAddress  = "0x0000000000000000000000000000000000000000" 
 	var hash 	= await web3.eth.sendTransaction({from: account.address, to: appConfig.flashloanProxy.address, value: depositAmount})
 	var result 	= await FlashloanProxy.methods.assetBalance(assetAddress).call()
 	console.log("Balance (flashloan): " + result)
@@ -89,6 +93,10 @@ const testFlashloan = async () => {
 	var hash 	= await FlashloanProxy.methods.assetWithdraw(assetAddress).send({from: account.address})
 	var result 	= await FlashloanProxy.methods.assetBalance(assetAddress).call()
 	console.log("Balance (flashloan): " + result)
-	
+
+	var addressLogicProvider = "0x0000000000000000000000000000000000000000"
+	var hash   = await FlashloanProxy.methods.setLogicProvider(addressLogicProvider).send({from: account.address})
+	var result = await FlashloanProxy.methods.getLogicProvider().call()
+	console.log("Logic Provider: " + result)
 }
 testFlashloan();
