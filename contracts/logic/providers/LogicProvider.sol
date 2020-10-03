@@ -22,6 +22,10 @@ contract LogicProvider is ILogicProvider, Withdrawable {
 
 		bytes memory data = _data;
 
+		/**
+			Define logic here
+		*/
+
 		addressFlashloanProxy.transfer( address(this).balance );
 		
 	}
