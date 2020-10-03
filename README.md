@@ -62,7 +62,7 @@ Run the javascript interface to test contract interation
 
 In case it is necessary to force recopmilation and redeployment
 
-./scripts/utils/truffle-migrate-force-deploy.sh 
+`./scripts/utils/truffle-migrate-force-deploy.sh` 
 
 After deploying the conract, it is also possible to interact dynamically via truffle console. The following sequece of commands gets a handle to the contract, transfers 0.1 ETH to the contract, takes a flashloan for 10 ETH, and withdraws the funds back to the requseting account.
 
